@@ -458,26 +458,54 @@ Module 6 - system hacking 498
 Module 7 - Malware Threats 713
 ——————————————
 	LAB 1 Gain access using trojans
-			1 using njRAT RAT Trojan
-				Win 10 attacker
-				Step: navegante to njRATv0.7  —>  run —>552 Port —> start
-				Win 2016 target
+			1 using njRAT RAT Trojan (WINDOWS Tool) Malicious Server tool
+				Win 10 attacker wind 16 target
+				Step: navegante to njRATv0.7  —>  run —>552 Port —> start -> Builder -> Lhost ->Build ->Save name
+				Send to file to Target
+				Manipulate the target by right click mouse
+							
+			2 Hide trojan using SwayzCryptor (Windows Tool) to make invisible in antivírus
+				Wind 2010 attacker win 2016 target
+					upload file on app -> encrypt -> new name file -> upload to web virus total just to check
+					send to target
+					use njRAT to Manipulate
+					
+			3 Create a Server using ProRat Tool (WINOWS Tool) audit network against remote access
+				Windows 2016 Target
+				Create ProRat SVR -> desable and enable functions -> bind a file.jpg -> .exe -> choice icon -> zip de file
+				connect -> Manipulate
+			
+			4 Create Trojan Server using Theef Rat Trojan (WINDOWS Tool)
+				WIn 2016 Target
+				manipulate
 				
-			2 Hide trojan using SwayzCryptor (hide Trojan) to make invisible in antivírus
-				Wind 2016
-					upload file on app
-				
-			3 Create a Server using ProRat Tool
-			4 Create Trojan Server using Theef Rat Trojan
 		2 Infect Target using vírus 
-			1 Create vírus using JPS
+			1 Create vírus using JPS (WINDOWS Tool) proof of concept to audit perimter sec
+			choice options to kick off system -> JPG Icon to send to target
+				
 		3 Performing Static Malware Analysis
 			1 online malware scanning using vírus total
-			2 string search using BinText
-			3 Indentify Packaging and Obfuscation Methods using PEid
-			4 Find Portable Executable (PE)
-			5 Identify file dependentes using Walker
-			6 Perform Malware Disassembly IDA and OllyDbg
+				upload to virtus total file tini.exe -> check details/relations/behavior
+				
+			2 string search using BinText (WINDOWS Tool)
+				upload file -> Go
+				
+			3 Indentify Packaging and Obfuscation Methods using PEid (WINDOWS Tool)
+				upload file -> open
+				
+			4 Find Portable Executable (PE) WINDOWS Tool
+				open file -> next -> Headers info
+				Navegate of app
+				
+			5 Identify file dependentes using Walker (WINDOWS Tool)
+				open file -> see all DLLs amlicious file
+				
+			6 Perform Malware Disassembly IDA and OllyDbg (WIND Tool)
+				New -> upload file - ok -> navegate
+				Menu view -> log
+				Menu View -> Executable modules
+				
+				
 		4 Performing Dynamic Malware Analysis
 			1 Port monitoring TCPView and CurrPorts 
 			2 Port monitoring using process monitor
