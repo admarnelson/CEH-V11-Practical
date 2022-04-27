@@ -507,12 +507,54 @@ Module 7 - Malware Threats 713
 				
 				
 		4 Performing Dynamic Malware Analysis
-			1 Port monitoring TCPView and CurrPorts 
-			2 Port monitoring using process monitor
-			3 Registry monitoring using Regshot and jv16 PowerTools
-			4 Windows Service Monitoring using Windows Manager SrvMan
-			5 Startup Programs monitoring using Autoruns and WinPatrol
+			1 Port monitoring TCPView and CurrPorts (WINDOWS Tool)
+				Windows 2016 Target
+				buid a trojan on njRAT -> run on target
+				on tcpview -> view process
+				
+			2 Port monitoring using process monitor (WINDOWS TOOL) detect suspicious process
+				run app and explore
+				
+			3 Registry monitoring using Regshot and jv16 PowerTools (WINDOWS Tool) scan the register value for suspicious)
+				navigate on APP
+				jv16 clean file and register
+				
+			4 Windows Service Monitoring using Windows Manager SrvMan (WIndows Tool) check suspicious wndows services
+				Navegate on each menu
+			
+			5 Startup Programs monitoring using Autoruns and WinPatrol (WINDOWS Tool) detect autorun or process
+								
 			6 Installation Monitoring using Mirekusoft
 			7 File and folder monitoring using PA file sight
 			8 Device Drivers using DriverView Drive Booster
 			9 DNS monitoring using DNSQuerySniffer
+	
+Module 8 - Sniffing 883
+------------------------
+	LAB 1 Perform Active Sniffing
+			1 MAC Flooding using macof (Linux Tool)
+				Wind 10 Target
+				use wireshark on Linux Parrot
+				command: macof -i eth0 -n 10 or macof -i eth0 -d IP_Target
+				
+			2 DHCP Starvation using Yersinia (Linux tool)
+				command: yersinia -I 
+				option: sending discover packet
+				see on wireshark result
+								
+			3 ARP Poisonining using arpspoof (Linux)
+				command: arpspoof -i eth0 -t IP_targets IP_Gateway
+			4 Man in the Midle using Cain e Abel
+			5 Spoof a MAC using TMAC and SMAC
+	LAB 2 Peform Network Sniffing Tools
+			1 Password sniffing using Wireshark
+			2 Analyse a Network Capsa Network
+			3 Analyse Omnipeek Net Protocol
+			4 Analyse Steel Central Packet
+	LAB 3 Detect Network Sniffing
+			1 Detect ARP Poisoning in switch based
+			2 Detect ARP using Xarp
+			3 Detect Promiscuous Mode using Nmap and NetScanTool Pro
+			
+
+
