@@ -538,16 +538,28 @@ Module 8 - Sniffing 883
 				command: macof -i eth0 -n 10 or macof -i eth0 -d IP_Target
 				
 			2 DHCP Starvation using Yersinia (Linux tool)
-				command: yersinia -I 
+				command: yersinia -I --> F2 select DHCP mode --> STP fields --> x -->
 				option: sending discover packet
 				see on wireshark result
 								
 			3 ARP Poisonining using arpspoof (Linux)
 				command: arpspoof -i eth0 -t IP_targets IP_Gateway
 			4 Man in the Midle using Cain e Abel
+				check all hosts
+				check 2 PCs by ftp using name_account and passwd
 			5 Spoof a MAC using TMAC and SMAC
+				
 	LAB 2 Peform Network Sniffing Tools
 			1 Password sniffing using Wireshark
+				Wireshark on Wind 2019
+				Windows 10 as Target
+					Browser: http://moviescope.com --> username and passwd
+				Windows 2019: filter wireshark: http.request.method == POST
+					menu edit: find packet -->  proto-Time-source-lenght-find
+					expand packet details
+					
+					937 Remote connection
+				
 			2 Analyse a Network Capsa Network
 			3 Analyse Omnipeek Net Protocol
 			4 Analyse Steel Central Packet
@@ -555,6 +567,7 @@ Module 8 - Sniffing 883
 			1 Detect ARP Poisoning in switch based
 			2 Detect ARP using Xarp
 			3 Detect Promiscuous Mode using Nmap and NetScanTool Pro
+			
 			
 
 
