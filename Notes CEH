@@ -567,7 +567,82 @@ Module 8 - Sniffing 883
 			1 Detect ARP Poisoning in switch based
 			2 Detect ARP using Xarp
 			3 Detect Promiscuous Mode using Nmap and NetScanTool Pro
-			
-			
+
+Module 9 - Social Engineering
+-----------------------------
+	LAB 1 Perform Social Engineering using Techniques
+		1 Social Engineer Toolki (SET)
+		2 Phishing using ShellPhish
+	LAB 2 Detect a Phishing Attack
+		1 Detect with Netcraft
+		2 Detect with PhishiTank
+	Lab 3 Audit Organization's Security for Phishing
+		1 Audit with OhPhish
+
+
+Module 10 - Denial of Services 
+------------------------------
+	Lab 1 Perform DoS and DDoS
+		1 SYN flooding using Metasploit (use auxiliary/dos/synflood)
+		2 usin hping3
+		3 using HOIC
+		4 Using LOIC
+	LAB 2 Detection
+		1 Using Anti DDoS Guardian
+		
+Module 11- Session Hijacking 
+----------------------------
+	LAB 1 Session Hijack
+		1 using Zed Attack Proxy (ZAP)
+		2 Intercept HTTP using bettercap
+	LAB 2 Detect Session Hijacking
+		1 detect using Wireshark
+		
+
+Module 12- Evading IDS, Firewall, Honeypots
+-------------------------------------------
+	LAB 1 ID using various tools
+		1 detect using Snort
+		2 Detect malicious using ZoneAlarm Free FW
+		3 Detect malicious network using HoneyBOT
+	LAB2 Evade FW Using techniques
+		1 Bypass windows FW using Nmap
+		2 Bypass FW rules using HTTP/FTP Tunneling
+		
+
+
+Module 13 - Web Hacking 
+-----------------------
+
+
+
+Module 14 - Web Application 
+---------------------------
+
+
+
+Module 15 - SQL Injection 
+-------------------------
+
+
+
+Module 16 - Hacking Wireless Network 
+------------------------------------
+
+
+
+Module 17 - Hacking Mobile Platforms 
+------------------------------------
+
+
+Module 19 - Cloud computing 
+----------------------------
+
+
+Module 11- Cryptography 
+-----------------------
+
+
+
 
 
