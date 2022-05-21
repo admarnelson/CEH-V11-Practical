@@ -4,16 +4,16 @@ Learning the primary CEH tools and comands used to get pass exam
 
 Main Tools Scanning
 
-    nmap (strongly!)
-    Zenmap
+      nmap (strongly!)
+      Zenmap
 
 Tools Sniffing
   
-     Wireshark (strongly!)
+      Wireshark (strongly!)
 
 Tools Rainbow tables
 
-    RainbowCrack
+     RainbowCrack
     
 Tools SQL Injection tools
 
@@ -30,11 +30,11 @@ Tools WordPress Hacking
 
 Tools Criptography
   
-    hashcalc
-    Veracrypt
+      hashcalc
+       Veracrypt
 
 Tools Steganography
-  
+    
     Quick Stego
 
 Tools Responder
