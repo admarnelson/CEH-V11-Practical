@@ -404,7 +404,7 @@ Module 6 - system hacking 498
 			shutdown							shutdown target system
 
 						
-	•		3 Mantain access and Hide Malicious
+	• 3 Mantain access and Hide Malicious
 				3- 1 PowerSpy
 			Target win 2016 
 			Host win 2019 Listen
@@ -777,7 +777,26 @@ Module 19 - Cloud computing
 
 Module 20- Cryptography 
 -----------------------
-
+	LAB 1 Encrypt Info
+		1 One-way HashCalc
+		2 MD5 Calculator
+		3 MD5 HashMyFiles
+		4 File/content of Text CryptoForge
+		5 file Advanced Encrypt Package
+		6 Encode/Decode BCTextEncoder or AxCrypt
+			pag 1717
+		
+	LAB 2 Self Certificate
+		1 Use Self Cert
+	LAB 3 Email Encryption
+		1 Rmail
+	LAB 4 Disk Encription
+		1 Veracrypt
+		2 Bitlocker
+		3 Rohos
+	LAB 5 Cryptanalysis
+		1 CrypTool
+		2 AlphaPeeler
 
 
 
