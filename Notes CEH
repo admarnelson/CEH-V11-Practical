@@ -752,6 +752,12 @@ Module 14 - Web Application
 						continue on pag 1390
 						
 		8 Gain Backdoor Access via Web Shell using Weevely
+		
+			See File uploaded on DVWA
+			
+				| dir C:\wamp\64\www\dvwa\hackable\uploads\
+		
+		
 			
 	LAB 3 Detect using tools
 		1 using N-Stalker web App Sec Scanner (windows)
@@ -815,6 +821,9 @@ Module 20- Cryptography
 		2 AlphaPeeler
 		
 
+
+EXTRA
+	
 
 
 
